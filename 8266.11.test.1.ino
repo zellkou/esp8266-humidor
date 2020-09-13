@@ -123,6 +123,8 @@ void setup(){
 
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
+  // set WiFi to station mode
+    WiFi.mode(WIFI_STA);
   Serial.println("Connecting to WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
