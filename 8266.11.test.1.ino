@@ -1,8 +1,3 @@
-/*********
-  Rui Santos
-  Complete project details at https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/
-*********/
-
 // Import required libraries
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
@@ -37,7 +32,7 @@ AsyncWebServer server(80);
 unsigned long previousMillis = 0;    // will store last time DHT was updated
 
 // Updates DHT readings every 10 seconds
-const long interval = 1000;  
+const long interval = 1000;
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -64,13 +59,13 @@ const char index_html[] PROGMEM = R"rawliteral(
 <body>
   <h2>ESP8266 DHT Server</h2>
   <p>
-    <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-    <span class="dht-labels">Temperature</span> 
+    <i class="fas fa-thermometer-half" style="color:#059e8a;"></i>
+    <span class="dht-labels">Temperature</span>
     <span id="temperature">%TEMPERATURE%</span>
     <sup class="units">&deg;F</sup>
   </p>
   <p>
-    <i class="fas fa-tint" style="color:#00add6;"></i> 
+    <i class="fas fa-tint" style="color:#00add6;"></i>
     <span class="dht-labels">Humidity</span>
     <span id="humidity">%HUMIDITY%</span>
     <sup class="units">%</sup>
@@ -148,8 +143,8 @@ void setup(){
   // Start server
   server.begin();
 }
- 
-void loop(){  
+
+void loop(){
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= interval) {
     // save the last time you updated the DHT values
@@ -166,7 +161,7 @@ void loop(){
     }
     // Read Humidity
     float newH = dht.readHumidity();
-    // if humidity read failed, don't change h value 
+    // if humidity read failed, don't change h value
     if (isnan(newH)) {
       Serial.println("Failed to read from DHT sensor!");
     }
